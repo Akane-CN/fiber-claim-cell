@@ -1,0 +1,76 @@
+{
+  "network": "ckb-testnet",
+  "finishedAt": "2026-11-17T11:53:08.268Z",
+  "claimLock": {
+    "txHash": "0xb367c3c1a9b840df3c4ea5838ec2190a1a6a16f61da9961912c38d5dd520e186",
+    "index": 0,
+    "codeHash": "0x8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623",
+    "size": 16896
+  },
+  "claimTransaction": "https://testnet.explorer.nervos.org/transaction/0x4d2cb410b9db009db8dfdd8a71f4a79cd18e9f39c4969ea8fae850c9b173bd94",
+  "whatTheReceiverSaw": [
+    "Arrived",
+    "Confirming",
+    "Claimed",
+    "Received"
+  ],
+  "passed": 11,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "receiver starts with nothing",
+      "ok": true,
+      "detail": "0 CKB on L1, no Fiber node"
+    },
+    {
+      "name": "receive page set itself up from one signature",
+      "ok": true,
+      "detail": "http://127.0.0.1:18400/?lsp=http%3A%2F%2F127.0.0.1%3A18300&rpc=http%3A%2F%2F127.0.0.1%3A18114%2F&to=078bfafbd0d5f9244377412be7ba6b10"
+    },
+    {
+      "name": "pay page produced a Fiber invoice",
+      "ok": true,
+      "detail": "fibt250000000001pkeymvj3p67g…"
+    },
+    {
+      "name": "page went from arrival to received by itself",
+      "ok": true,
+      "detail": "Arrived → Confirming → Claimed → Received"
+    },
+    {
+      "name": "money is in the receiver's own address on L1",
+      "ok": true,
+      "detail": "248.75 CKB"
+    },
+    {
+      "name": "claim is a public L1 transaction",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x4d2cb410b9db009db8dfdd8a71f4a79cd18e9f39c4969ea8fae850c9b173bd94"
+    },
+    {
+      "name": "payer's payment succeeded",
+      "ok": true,
+      "detail": "status Success"
+    },
+    {
+      "name": "payer holds the preimage for this payment",
+      "ok": true,
+      "detail": "preimage 0x344510cd4775cd4be49a35bb7ae7e03a87c16eee14413fd11ce083e6b5c9ca18"
+    },
+    {
+      "name": "a second device recovers the same pay link",
+      "ok": true,
+      "detail": "http://127.0.0.1:18400/?lsp=http%3A%2F%2F127.0.0.1%3A18300&rpc=http%3A%2F%2F127.0.0.1%3A18114%2F&to=078bfafbd0d5f9244377412be7ba6b10"
+    },
+    {
+      "name": "a second device shows the received payment",
+      "ok": true,
+      "detail": "history restored from the wallet alone"
+    },
+    {
+      "name": "no script errors on the page",
+      "ok": true,
+      "detail": "none"
+    }
+  ]
+}

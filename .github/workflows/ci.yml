@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.97.0
+        with:
+          targets: riscv64imac-unknown-none-elf
+      - name: Build the lock script and run the script-level tests
+        run: make test
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check that the build is the deployed binary, and run the unit tests
+        working-directory: lsp
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: lsp
+      - name: Typecheck and build the receive page
+        working-directory: app
+        run: |
+          npm ci
+          npx tsc -p .
+          VITE_LSP_URL=https://lsp.example npx vite build

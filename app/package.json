@@ -1,0 +1,21 @@
+{
+  "name": "fiber-claim-cell-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p . && vite build",
+    "preview": "vite preview",
+    "e2e": "tsx --tsconfig e2e/tsconfig.json e2e/run.ts"
+  },
+  "dependencies": {
+    "@ckb-ccc/connector": "^1.0.0",
+    "@noble/hashes": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}

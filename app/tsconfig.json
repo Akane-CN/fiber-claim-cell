@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@ckb-ccc/core": ["./node_modules/@ckb-ccc/core/dist/index.d.mts"],
+      "@noble/hashes/*": ["./node_modules/@noble/hashes/*"]
+    }
+  },
+  "include": ["src"]
+}

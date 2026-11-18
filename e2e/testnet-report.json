@@ -1,0 +1,218 @@
+{
+  "network": "ckb-testnet",
+  "rpc": "https://testnet.ckb.dev/",
+  "finishedAt": "2026-11-17T11:33:48.243Z",
+  "deployment": {
+    "txHash": "0xb367c3c1a9b840df3c4ea5838ec2190a1a6a16f61da9961912c38d5dd520e186",
+    "index": 0,
+    "codeHash": "0x8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623",
+    "size": 16896,
+    "hashType": "data2",
+    "explorer": "https://testnet.explorer.nervos.org/transaction/0xb367c3c1a9b840df3c4ea5838ec2190a1a6a16f61da9961912c38d5dd520e186"
+  },
+  "createClaimCellsTx": "https://testnet.explorer.nervos.org/transaction/0xcfbb3452796d7335a69ce6d8ab2f308ef2945264bac37a49630b301368446da8",
+  "passed": 25,
+  "failed": 0,
+  "checks": [
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "wrong preimage",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 20 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#20 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "payout to a stranger",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 22 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#22 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "receiver underpaid by 1 shannon",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 23 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#23 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "claimer keeps the LSP's change",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 25 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#25 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "refund before expiry (since = expiry, not yet mature)",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Transaction(Immature(Inputs[0]): the transaction is immature because of the since requirement)"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "refund with a mature since earlier than expiry",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 32 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#32 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "a second input sharing the payout output",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#12 })"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "claim with the preimage, no signature, no extra input",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x26608148bbf3e1dd2351932e3b578c357916de0dbdb4b5070d1ace6b6377bf01"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "receiver holds 100 CKB",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "100 CKB, data 0x"
+    },
+    {
+      "scenario": "A: CKB claim (ckb_hash, change to LSP)",
+      "name": "LSP got 61 CKB change",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "61 CKB, data 0x"
+    },
+    {
+      "scenario": "B: CKB claim (sha256, no change output)",
+      "name": "preimage checked with the wrong algorithm's hash",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 20 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#20 })"
+    },
+    {
+      "scenario": "B: CKB claim (sha256, no change output)",
+      "name": "claim with the preimage",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x384b218ba8ca91a2804fba97b4f824d7a2acbcf7122a8ee519fbe6f09e9fb8c0"
+    },
+    {
+      "scenario": "B: CKB claim (sha256, no change output)",
+      "name": "receiver holds 130 CKB",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "130 CKB, data 0x"
+    },
+    {
+      "scenario": "D: xUDT claim (LSP fronts capacity)",
+      "name": "tokens paid to a stranger",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 22 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#22 })"
+    },
+    {
+      "scenario": "D: xUDT claim (LSP fronts capacity)",
+      "name": "tokens dropped from the payout",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 40 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#40 })"
+    },
+    {
+      "scenario": "D: xUDT claim (LSP fronts capacity)",
+      "name": "claim with the preimage",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0xd7532f56099398089765e57210d5c8dd8bc96ff1ea8fd7d2634cfab2e9e6259a"
+    },
+    {
+      "scenario": "D: xUDT claim (LSP fronts capacity)",
+      "name": "receiver holds the tokens on 142 CKB",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "142 CKB, data 0x40787d01000000000000000000000000"
+    },
+    {
+      "scenario": "D: xUDT claim (LSP fronts capacity)",
+      "name": "LSP got 69 CKB change",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "69 CKB, data 0x"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "refund before the chain's median time reaches expiry",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "node rejected as Immature until median time passed expiry"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "matured refund paid to a stranger",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 34 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#34 })"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "matured refund paid to the receiver",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 34 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#34 })"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "matured refund skimming more than FEE_CAP",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Lock, cause: ValidationFailure: see error code 35 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-data-hash/8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623.html#35 })"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "refund to the LSP, no signature",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x10392e1e7e9347cfbdba9e58a845828c44e53ac32134b9cd5f3655f8c643187b"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "LSP holds 161 CKB again",
+      "expect": "accepted",
+      "outcome": "accepted",
+      "ok": true,
+      "detail": "161 CKB, data 0x"
+    },
+    {
+      "scenario": "C: refund after expiry",
+      "name": "claim after the cell was refunded",
+      "expect": "rejected",
+      "outcome": "rejected",
+      "ok": true,
+      "detail": "Client request error TransactionFailedToResolve: Resolve failed Unknown(OutPoint(0xcfbb3452796d7335a69ce6d8ab2f308ef2945264bac37a49630b301368446da802000000))"
+    }
+  ]
+}

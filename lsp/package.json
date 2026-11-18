@@ -1,0 +1,21 @@
+{
+  "name": "fiber-claim-cell",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "tsx --test test/*.test.ts",
+    "e2e": "tsx src/e2e-testnet.ts",
+    "e2e:watchtower": "tsx src/e2e-watchtower.ts",
+    "watch": "tsx src/watch.ts"
+  },
+  "dependencies": {
+    "@ckb-ccc/core": "^1.12.0",
+    "@noble/hashes": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

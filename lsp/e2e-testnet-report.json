@@ -1,0 +1,188 @@
+{
+  "network": "ckb-testnet",
+  "finishedAt": "2026-11-17T11:50:50.482Z",
+  "fiber": {
+    "version": "0.10.1",
+    "commit": "21c4dfb 2026-11-14"
+  },
+  "claimLock": {
+    "txHash": "0xb367c3c1a9b840df3c4ea5838ec2190a1a6a16f61da9961912c38d5dd520e186",
+    "index": 0,
+    "codeHash": "0x8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623",
+    "size": 16896
+  },
+  "transactions": {
+    "claimCellCreate": "https://testnet.explorer.nervos.org/transaction/0x0b616b8edd3ee205719244cb7814b3ba9238ca7fb5105e57b6e56f24217b6531",
+    "claim": "https://testnet.explorer.nervos.org/transaction/0x59b813b8fbfd3ae095504fa2302ba42a0a12aa40f37e3d858d2f4ab260760eb7",
+    "refundCellCreate": "https://testnet.explorer.nervos.org/transaction/0x6af3d22d09cb6dffd73c99bd7fb75b48b1fcf2e58ed6172f6cfbd928a7c7257b",
+    "refund": "https://testnet.explorer.nervos.org/transaction/0xbe002334bc2ed607859d95d48569d18781892a1a7ad9499e8e08221326904aa3",
+    "outageCellCreate": "https://testnet.explorer.nervos.org/transaction/0x245fca069c922d42b6023e6434b20a9c8ea8aae22dc9a8cab2ca83211b03bfbc",
+    "outageRefund": "https://testnet.explorer.nervos.org/transaction/0x5ba6d757e187d16f718d266d13c64b265a8a171874e3400c85ac785df0cedc5c"
+  },
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "LSP held the payment and sent a wake-up",
+      "ok": true,
+      "detail": "LSP state HELD, wake-ups 1"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "payer's payment is pending while held",
+      "ok": true,
+      "detail": "payer status Inflight"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "payer's payment succeeded",
+      "ok": true,
+      "detail": "status Success"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "payer received the receiver's preimage as proof",
+      "ok": true,
+      "detail": "preimage 0x01eed3331576f2fed3426e7261bb465e5d5ac4970e59b79ad419d13843174db3"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "LSP settled its incoming invoice",
+      "ok": true,
+      "detail": "LSP state SETTLED"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "receiver's invoice is paid",
+      "ok": true,
+      "detail": "receiver invoice Paid, net 99.9 CKB"
+    },
+    {
+      "scenario": "A: receiver wakes up, paid over its channel",
+      "name": "payer paid exactly the invoice amount plus routing fee",
+      "ok": true,
+      "detail": "paid 100 CKB (fee 0 shannons)"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "LSP opened a claim cell",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x0b616b8edd3ee205719244cb7814b3ba9238ca7fb5105e57b6e56f24217b6531"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "payer's payment is still pending",
+      "ok": true,
+      "detail": "payer status Inflight"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "receiver refuses a cell that pays less than agreed",
+      "ok": true,
+      "detail": "claim cell pays 29870000000, expected at least 29870000001"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "receiver verified the claim cell on chain",
+      "ok": true,
+      "detail": "4 confirmations, pays 298.7 CKB"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "receiver claimed with no signature and no CKB of its own",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x59b813b8fbfd3ae095504fa2302ba42a0a12aa40f37e3d858d2f4ab260760eb7 — receiver holds 298.7 CKB"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "payer's payment succeeded after the claim",
+      "ok": true,
+      "detail": "status Success"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "payer received the preimage the receiver put on chain",
+      "ok": true,
+      "detail": "preimage 0x3a485127d6939224add18e1c2d5df0283e9c79b945ccb69f49377ef079bd936b"
+    },
+    {
+      "scenario": "B: receiver offline, claims on L1 with an empty wallet",
+      "name": "LSP read the preimage from L1 and settled upstream",
+      "ok": true,
+      "detail": "LSP state SETTLED"
+    },
+    {
+      "scenario": "C: nobody claims, LSP refunds and the payer is made whole",
+      "name": "receiver refuses to claim this close to expiry",
+      "ok": true,
+      "detail": "too close to the claim cell's expiry to claim safely"
+    },
+    {
+      "scenario": "C: nobody claims, LSP refunds and the payer is made whole",
+      "name": "LSP refunded the claim cell after expiry",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0xbe002334bc2ed607859d95d48569d18781892a1a7ad9499e8e08221326904aa3"
+    },
+    {
+      "scenario": "C: nobody claims, LSP refunds and the payer is made whole",
+      "name": "payer's payment failed cleanly",
+      "ok": true,
+      "detail": "status Failed: InvoiceCancelled"
+    },
+    {
+      "scenario": "C: nobody claims, LSP refunds and the payer is made whole",
+      "name": "payer's channel balance is back to what it was",
+      "ok": true,
+      "detail": "before 400 CKB, after 400 CKB"
+    },
+    {
+      "scenario": "C: nobody claims, LSP refunds and the payer is made whole",
+      "name": "LSP's invoice is cancelled",
+      "ok": true,
+      "detail": "invoice Cancelled"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "a payment over the exposure limit waits instead of opening a cell",
+      "ok": true,
+      "detail": "state HELD, note \"waiting: claim cells are at this receiver's limit\", exposure 0"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "the claim cell is on record before it is on the network",
+      "ok": true,
+      "detail": "state CELL_PENDING, recorded 0x245fca069c922d42b6023e6434b20a9c8ea8aae22dc9a8cab2ca83211b03bfbc, node knows it: no"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "after the restart the same transaction was sent, and only one claim cell exists",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x245fca069c922d42b6023e6434b20a9c8ea8aae22dc9a8cab2ca83211b03bfbc — 1 cell(s) for this payment"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "a keyless watcher refunded the cell to the LSP while the LSP was down",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0x5ba6d757e187d16f718d266d13c64b265a8a171874e3400c85ac785df0cedc5c — 298.7 CKB back under the LSP's lock"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "the restarted LSP recognised the refund and released the payment",
+      "ok": true,
+      "detail": "refunded in 0x5ba6d757e187d16f718d266d13c64b265a8a171874e3400c85ac785df0cedc5c; incoming TLC returned"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "payer's payment failed cleanly and its balance is back",
+      "ok": true,
+      "detail": "status Failed; before 400 CKB, after 400 CKB"
+    },
+    {
+      "scenario": "D: LSP crashes and is down at expiry; nothing is paid twice or lost",
+      "name": "no CKB is left committed to claim cells",
+      "ok": true,
+      "detail": "exposure 0"
+    }
+  ]
+}

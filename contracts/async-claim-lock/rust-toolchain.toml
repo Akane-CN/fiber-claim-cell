@@ -1,0 +1,6 @@
+# The deployed code hash is the hash of the binary this exact toolchain
+# produces. Changing the version changes the hash.
+[toolchain]
+channel = "1.97.0"
+targets = ["riscv64imac-unknown-none-elf"]
+profile = "minimal"

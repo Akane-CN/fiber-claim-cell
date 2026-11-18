@@ -1,0 +1,146 @@
+{
+  "network": "ckb-testnet",
+  "finishedAt": "2026-11-17T21:24:35.922Z",
+  "fiber": {
+    "version": "0.10.1",
+    "commit": "21c4dfb 2026-11-14"
+  },
+  "claimLock": {
+    "txHash": "0xb367c3c1a9b840df3c4ea5838ec2190a1a6a16f61da9961912c38d5dd520e186",
+    "index": 0,
+    "codeHash": "0x8db24f4dc53d59e572397ee60c9fb1783f7a15cb22908b85ce329edca71de623",
+    "size": 16896
+  },
+  "timings": {
+    "finalExpiryDeltaMinutes": 170,
+    "payerExpiryLimitMinutes": 415,
+    "tlcExpiryMinutesAfterPayment": 410
+  },
+  "transactions": {
+    "funding": "https://testnet.explorer.nervos.org/transaction/0xffed6a9e204cf4c1f4a0be90159bd1cbea4e336293b5c169516267b3f9cbbb7a",
+    "p1ClaimCell": "https://testnet.explorer.nervos.org/transaction/0x2e92e12b323e59b9e74953c9d2614d55edc20253bfabef1822da2b4012fb843a",
+    "p1ReceiverClaim": "https://testnet.explorer.nervos.org/transaction/0xb11154041219ec2b1c65d7e70ecb6eefaa804b8329986e2ee56c841835807cfb",
+    "p2ClaimCell": "https://testnet.explorer.nervos.org/transaction/0xf52dc6b18ac0b38e2ad9d05c644504076329153f16b67ed6a04fc27b25fe4d7b",
+    "p2ReceiverClaim": "https://testnet.explorer.nervos.org/transaction/0x17b5a22f084ba31b5c70ec01310716b37c6c0cae89150fa840f73188f46877b3",
+    "forceClose": "https://testnet.explorer.nervos.org/transaction/0x35c539ced670c704193d5e07140a34b0813069e0a2b010b78360cf8e812ed5a4",
+    "settlements": [
+      "https://testnet.explorer.nervos.org/transaction/0xf1795e601a7c34a7dca16735f8860a60f61ae3bf3a84b52b3fd21330b922c44f"
+    ],
+    "watchtowerClaim": "https://testnet.explorer.nervos.org/transaction/0xf1795e601a7c34a7dca16735f8860a60f61ae3bf3a84b52b3fd21330b922c44f"
+  },
+  "events": [
+    {
+      "at": "2026-11-17T15:36:28.159Z",
+      "minutesAfterPayment": 0,
+      "what": "payer paid p1 (0x77a9b48393f13b60da747d84bc1a74f8fadc2b02cd39cc6d2899e506f372eb38)"
+    },
+    {
+      "at": "2026-11-17T15:36:28.169Z",
+      "minutesAfterPayment": 0,
+      "what": "payer paid p2 (0x8eb8f39d4d93a37d00b2ac9a517b2c6d7f9393a711cee8c41e262dbee828d0d2)"
+    },
+    {
+      "at": "2026-11-17T15:37:23.671Z",
+      "minutesAfterPayment": 0.9,
+      "what": "claim cells live: https://testnet.explorer.nervos.org/transaction/0x2e92e12b323e59b9e74953c9d2614d55edc20253bfabef1822da2b4012fb843a and https://testnet.explorer.nervos.org/transaction/0xf52dc6b18ac0b38e2ad9d05c644504076329153f16b67ed6a04fc27b25fe4d7b"
+    },
+    {
+      "at": "2026-11-17T15:37:23.681Z",
+      "minutesAfterPayment": 0.9,
+      "what": "LSP node killed; both payments are held and both claim cells are live"
+    },
+    {
+      "at": "2026-11-17T15:37:52.461Z",
+      "minutesAfterPayment": 1.4,
+      "what": "receiver claimed p1 on L1 while the LSP node was down: https://testnet.explorer.nervos.org/transaction/0xb11154041219ec2b1c65d7e70ecb6eefaa804b8329986e2ee56c841835807cfb"
+    },
+    {
+      "at": "2026-11-17T15:38:18.419Z",
+      "minutesAfterPayment": 1.8,
+      "what": "receiver claimed p2 on L1 while the LSP node was down: https://testnet.explorer.nervos.org/transaction/0x17b5a22f084ba31b5c70ec01310716b37c6c0cae89150fa840f73188f46877b3"
+    },
+    {
+      "at": "2026-11-17T15:38:25.468Z",
+      "minutesAfterPayment": 2,
+      "what": "LSP node restarted after 1 minutes down"
+    },
+    {
+      "at": "2026-11-17T15:38:36.892Z",
+      "minutesAfterPayment": 2.1,
+      "what": "LSP node killed again, for good; P1 is still held and already claimed on L1"
+    },
+    {
+      "at": "2026-11-17T20:02:30.808Z",
+      "minutesAfterPayment": 266,
+      "what": "channel force-closed on chain: https://testnet.explorer.nervos.org/transaction/0x35c539ced670c704193d5e07140a34b0813069e0a2b010b78360cf8e812ed5a4"
+    },
+    {
+      "at": "2026-11-17T21:24:35.628Z",
+      "minutesAfterPayment": 348.1,
+      "what": "commitment cell spent: https://testnet.explorer.nervos.org/transaction/0xf1795e601a7c34a7dca16735f8860a60f61ae3bf3a84b52b3fd21330b922c44f"
+    },
+    {
+      "at": "2026-11-17T21:24:35.921Z",
+      "minutesAfterPayment": 348.1,
+      "what": "payer's view of P1 at the end: Inflight"
+    }
+  ],
+  "passed": 9,
+  "failed": 1,
+  "checks": [
+    {
+      "name": "p1: the LSP read the TLC's real expiry and its upstream peer from the node",
+      "ok": true,
+      "detail": "expires 410 minutes after payment; came through 02e73d6341e9bbbd\u2026"
+    },
+    {
+      "name": "p2: the LSP read the TLC's real expiry and its upstream peer from the node",
+      "ok": true,
+      "detail": "expires 410 minutes after payment; came through 02e73d6341e9bbbd\u2026"
+    },
+    {
+      "name": "a keyless relay read both preimages from L1 and stored them in the watchtower",
+      "ok": true,
+      "detail": "10 delivered, 0 failed"
+    },
+    {
+      "name": "P2: a node that was down during the claim came back and collected over the channel",
+      "ok": true,
+      "detail": "node down 1 minutes; payer status Success; LSP SETTLED"
+    },
+    {
+      "name": "P1 was left unsettled on the node",
+      "ok": true,
+      "detail": "LSP invoice for P1 is Received"
+    },
+    {
+      "name": "the LSP node was down when both claims confirmed",
+      "ok": true,
+      "detail": "node RPC not answering"
+    },
+    {
+      "name": "the payer's node force-closed by itself as the TLC neared expiry",
+      "ok": false,
+      "detail": "at minute 266 after payment; the TLC expires at minute 410; the LSP node was down and did nothing"
+    },
+    {
+      "name": "P1: the watchtower collected the TLC on chain with the preimage while the LSP node was down",
+      "ok": true,
+      "detail": "https://testnet.explorer.nervos.org/transaction/0xf1795e601a7c34a7dca16735f8860a60f61ae3bf3a84b52b3fd21330b922c44f \u2014 499.99999086 CKB to the watchtower's own lock, seen at minute 348"
+    },
+    {
+      "name": "it happened before the payer's timeout path opened",
+      "ok": true,
+      "detail": "seen at minute 348; the TLC expires at minute 410"
+    },
+    {
+      "name": "the LSP node never came back",
+      "ok": true,
+      "detail": "node RPC not answering at the end of the run"
+    }
+  ],
+  "notes": [
+    "The test machine restarted between 19:39 and 20:00 UTC on 2026-11-17. The payer and watchtower nodes were down for at most about 20 minutes around minute 250, when the force close was due; the payer force-closed about 90 seconds after it came back (block time 20:02:08 UTC). The LSP node was not restarted.",
+    "The watchtower's settlement transaction took the commitment cell from 1099.99999543 to 899.99999543 CKB; the 200 CKB TLC went to the watchtower's own lock in an output of 499.99999086 CKB that also carries the watchtower's own fee input."
+  ]
+}

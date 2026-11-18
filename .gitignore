@@ -1,0 +1,7 @@
+target/
+build/
+node_modules/
+.env
+*.key
+dist/
+dist-e2e/
